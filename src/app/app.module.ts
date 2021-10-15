@@ -15,7 +15,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddToListComponent } from './add-to-list/add-to-list.component';
-
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,18 @@ import { AddToListComponent } from './add-to-list/add-to-list.component';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    // Specify the ngx-auth-firebaseui library as an import
+    NgxAuthFirebaseUIModule.forRoot({
+      apiKey: 'your-firebase-apiKey',
+      authDomain: 'your-firebase-authDomain',
+      databaseURL: 'your-firebase-databaseURL',
+      projectId: 'your-firebase-projectId',
+      storageBucket: 'your-firebase-storageBucket',
+      messagingSenderId: 'your-firebase-messagingSenderId'
+  }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

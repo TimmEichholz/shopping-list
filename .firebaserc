@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "einkaufszettel-1f501"
+  },
+  "targets": {
+    "einkaufszettel-1f501": {
+      "hosting": {
+        "shopping-list": [
+          "einkaufszettel-1f501"
+        ]
+      }
+    }
+  }
+}
